@@ -11,6 +11,9 @@ const SearchInput = (props) => {
         style={styles.input}
         value={props.searching}
         onChangeText={props.onSearchChange}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onEndEditing={props.onSubmit}
       />
     </View>
   );
