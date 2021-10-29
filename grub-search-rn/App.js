@@ -11,8 +11,16 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Dummy" component={DummyScreen} />
-        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen
+          name="Dummy"
+          options={{ title: "Dummy Page" }}
+          component={DummyScreen}
+        />
+        <Stack.Screen
+          name="Search"
+          options={{ title: "Restaurant Search" }}
+          component={SearchScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
