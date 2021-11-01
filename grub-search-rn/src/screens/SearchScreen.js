@@ -1,36 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import SearchInput from "../components/SearchInput";
+import useApi from "../hooks/useApi";
 import yelp from "../api/yelp";
 
 const SearchScreen = () => {
-  const [searching, setSearching] = useState("");
-  const [results, setResults] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [searchingIt, setSearching] = useState("");
+  const [searchApi, results, errorMessage] = useApi();
 
-  const searchApi = async () => {
-    try {
-      //sends promise
-      const response = await yelp.get("/search", {
-        params: {
-          limit: 20,
-          term: searching,
-          location: "Sarasota",
-        },
-      }); //will get back response.data array of objects
-      setResults(response.data.businesses);
-    } catch (err) {
-      setErrorMessage("Opps, something went wrong!");
-    }
-  };
   console.log(results);
 
   return (
     <View style={styles.screen}>
       <SearchInput
-        searching={searching}
-        onSearchChange={(text) => setSearching(text)}
-        onSubmit={searchApi}
+        searchingFor={searchingIt}
+        onSearchChange={setSearching}
+        onSubmit={() => searchApi(searchingIt)}
       />
       <Text style={styles.title}>Search Screen</Text>
       {errorMessage ? <Text>{errorMessage} </Text> : null}

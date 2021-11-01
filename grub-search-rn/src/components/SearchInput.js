@@ -9,7 +9,7 @@ const SearchInput = (props) => {
       <TextInput
         placeholder="Search"
         style={styles.input}
-        value={props.searching}
+        value={props.searchingFor}
         onChangeText={props.onSearchChange}
         autoCapitalize="none"
         autoCorrect={false}
