@@ -16,7 +16,6 @@ const ResultsList = (props) => {
   //console.log(props.navigation);
 
   const list = props.results.map((listItems) => {
-    //props.navigation.setParams({ ids: listItems.id });
     return (
       <TouchableOpacity
         onPress={() => props.navigation.navigate("Tile", { id: listItems.id })}

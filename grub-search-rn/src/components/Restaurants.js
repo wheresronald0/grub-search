@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 const Restaurants = ({ result }) => {
-  console.log(result.id);
+  //console.log(result.id);
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: result.image_url }} />
