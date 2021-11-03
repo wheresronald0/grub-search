@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-const RestaurantList = ({ result }) => {
+const Restaurants = ({ result }) => {
+  console.log(result.id);
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: result.image_url }} />
@@ -27,4 +28,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-export default RestaurantList;
+export default Restaurants;

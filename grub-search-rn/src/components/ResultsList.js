@@ -1,3 +1,4 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import {
   View,
@@ -6,13 +7,23 @@ import {
   Button,
   Flatlist,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 
-import RestaurantList from "./RestaurantList";
+import Restaurants from "./Restaurants";
 
 const ResultsList = (props) => {
+  //console.log(props.navigation);
+
   const list = props.results.map((listItems) => {
-    return <RestaurantList result={listItems} key={listItems.id} />;
+    //props.navigation.setParams({ ids: listItems.id });
+    return (
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate("Tile", { id: listItems.id })}
+      >
+        <Restaurants result={listItems} key={listItems.id} />
+      </TouchableOpacity>
+    );
   });
   return (
     <View>

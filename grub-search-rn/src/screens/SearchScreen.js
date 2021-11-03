@@ -4,9 +4,10 @@ import SearchInput from "../components/SearchInput";
 import useApi from "../hooks/useApi";
 import ResultsList from "../components/ResultsList";
 
-const SearchScreen = () => {
+const SearchScreen = (props) => {
   const [searching, setSearching] = useState("");
   const [searchApi, results, errorMessage] = useApi();
+  //console.log(props);
 
   //helper function
   const filterResultsByPrice = (price) => {
@@ -33,12 +34,18 @@ const SearchScreen = () => {
         <ResultsList
           results={filterResultsByPrice("$")}
           title="Cost Effective"
+          navigation={props.navigation}
         />
         <ResultsList
           results={filterResultsByPrice("$$")}
           title="Pricier, but Affordable"
+          navigation={props.navigation}
         />
-        <ResultsList results={filterResultsByPrice("$$$")} title="Expensive" />
+        <ResultsList
+          results={filterResultsByPrice("$$$")}
+          title="Expensive"
+          navigation={props.navigation}
+        />
       </ScrollView>
     </View>
   );
