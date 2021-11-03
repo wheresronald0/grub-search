@@ -17,7 +17,9 @@ const ResultsList = (props) => {
   return (
     <View>
       <Text style={styles.title}>{props.title}</Text>
-      <ScrollView horizontal>{list}</ScrollView>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {list}
+      </ScrollView>
     </View>
   );
 };
@@ -26,11 +28,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "bold",
-  },
-  text: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "green",
+    marginHorizontal: 10,
   },
 });
 export default ResultsList;

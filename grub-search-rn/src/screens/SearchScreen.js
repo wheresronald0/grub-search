@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SearchInput from "../components/SearchInput";
 import useApi from "../hooks/useApi";
 import ResultsList from "../components/ResultsList";
@@ -25,28 +25,33 @@ const SearchScreen = () => {
         onSearchChange={setSearching}
         onSubmit={() => searchApi(searching)}
       />
-      <Text style={styles.title}>Search Screen</Text>
+
       {errorMessage ? <Text>{errorMessage} </Text> : null}
 
-      <Text>We have found {results.length} results!</Text>
-      <ResultsList results={filterResultsByPrice("$")} title="Cost Effective" />
-      <ResultsList results={filterResultsByPrice("$$")} title="Pricier" />
-      <ResultsList results={filterResultsByPrice("$$$")} title="Expensive" />
-      <ResultsList
-        results={filterResultsByPrice("$$$$")}
-        title="Super Expensive"
-      />
+      <Text style={styles.text}>We have found {results.length} results!</Text>
+      <ScrollView>
+        <ResultsList
+          results={filterResultsByPrice("$")}
+          title="Cost Effective"
+        />
+        <ResultsList
+          results={filterResultsByPrice("$$")}
+          title="Pricier, but Affordable"
+        />
+        <ResultsList results={filterResultsByPrice("$$$")} title="Expensive" />
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
+    flex: 1,
     backgroundColor: "white",
     height: "100%",
   },
-  title: {
-    fontSize: 22,
+  text: {
+    alignSelf: "center",
   },
 });
 export default SearchScreen;

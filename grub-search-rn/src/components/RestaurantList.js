@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     height: 125,
     width: 200,
     borderRadius: 10,
+    marginBottom: 5,
   },
   name: {
     fontWeight: "bold",

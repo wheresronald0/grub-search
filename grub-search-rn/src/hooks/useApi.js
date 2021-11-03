@@ -11,9 +11,9 @@ export default () => {
       //sends promise
       const response = await yelp.get("/search", {
         params: {
-          limit: 20,
+          limit: 30,
           term: searchTerm,
-          location: "Sarasota",
+          location: "Bradenton",
         },
       }); //will get back response.data array of objects
       setResults(response.data.businesses);
